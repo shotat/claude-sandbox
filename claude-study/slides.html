@@ -606,6 +606,173 @@
                     <p>重い調査はサブエージェントに任せて、結果だけ受け取る</p>
                 </section>
 
+                <section>
+                    <h2>組み込みサブエージェント</h2>
+                    <p>Claude Code には複数の組み込みサブエージェントがある（主要なもの）</p>
+                    <table class="comparison-table" style="margin-top: 20px;">
+                        <tr>
+                            <th>名前</th>
+                            <th>モデル</th>
+                            <th>用途</th>
+                        </tr>
+                        <tr class="fragment">
+                            <td><span class="code-inline">Explore</span></td>
+                            <td>Haiku（高速）</td>
+                            <td>読み取り専用。ファイル検索、コード調査</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><span class="code-inline">Plan</span></td>
+                            <td>継承</td>
+                            <td>Plan Mode時の情報収集</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><span class="code-inline">General-purpose</span></td>
+                            <td>継承</td>
+                            <td>複雑なマルチステップタスク</td>
+                        </tr>
+                    </table>
+                    <p class="small-text fragment" style="margin-top: 15px;">
+                        他にも <span class="code-inline">Bash</span>、<span class="code-inline">statusline-setup</span>、<span class="code-inline">Claude Code Guide</span> など特定タスク用のヘルパーエージェントも存在
+                    </p>
+                    <div class="highlight-box fragment" style="margin-top: 15px;">
+                        <p style="margin: 0;"><strong>Exploreは Haiku を使う</strong> = 高速かつ低コストで大量のファイルを調査できる</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>サブエージェントのメリット</h2>
+                    <div class="card-grid">
+                        <div class="card fragment">
+                            <h4>🧠 コンテキスト保全</h4>
+                            <p>調査結果がメインの会話を汚さない。要約だけ受け取る。</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>🔒 ツール制限</h4>
+                            <p>サブエージェントごとに使えるツールを制限できる。安全性向上。</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>💰 コスト管理</h4>
+                            <p>軽いタスクはHaikuに任せてコスト削減。</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>⚡ 並列実行</h4>
+                            <p>複数のサブエージェントを同時に走らせて高速化。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>サブエージェントの実行モード</h2>
+                    <div class="two-column">
+                        <div class="column">
+                            <div class="highlight-box">
+                                <h4 style="margin-top: 0;">フォアグラウンド</h4>
+                                <ul style="font-size: 0.9em;">
+                                    <li>完了まで待機</li>
+                                    <li>権限確認が対話的に可能</li>
+                                    <li>質問も受け付ける</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="highlight-box" style="border-left-color: #a55eea;">
+                                <h4 style="margin-top: 0; color: #a55eea;">バックグラウンド</h4>
+                                <ul style="font-size: 0.9em;">
+                                    <li>並行して作業継続</li>
+                                    <li>事前に権限を確認</li>
+                                    <li><span class="code-inline">Ctrl+B</span> で切り替え</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="success-box fragment" style="margin-top: 20px;">
+                        <p style="margin: 0; text-align: center;">「バックグラウンドで実行して」と指示するか、実行中に <span class="code-inline">Ctrl+B</span> を押す</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>カスタムサブエージェントの作成</h2>
+                    <div class="terminal-window" style="font-size: 0.85em;">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-body" style="padding: 12px;">
+                            <div><span class="terminal-prompt">> </span><span class="terminal-command">/agents</span></div>
+                            <div class="terminal-output" style="margin-top: 10px;">1. View all available subagents</div>
+                            <div class="terminal-output">2. <span style="color: #2ed573;">Create new agent</span></div>
+                            <div class="terminal-output">3. Edit existing agent</div>
+                        </div>
+                    </div>
+                    <div class="two-column" style="margin-top: 20px;">
+                        <div class="column">
+                            <h4 style="color: #54a0ff;">配置場所</h4>
+                            <ul style="font-size: 0.85em;">
+                                <li><span class="code-inline">~/.claude/agents/</span><br><span class="small-text">全プロジェクトで利用可</span></li>
+                                <li><span class="code-inline">.claude/agents/</span><br><span class="small-text">このプロジェクトのみ</span></li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4 style="color: #2ed573;">ファイル形式</h4>
+                            <p style="font-size: 0.85em;">Markdownファイル（YAML frontmatter + システムプロンプト）</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>カスタムサブエージェントの例</h2>
+                    <div class="terminal-window" style="font-size: 0.8em;">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-body" style="padding: 12px;">
+                            <div style="color: #ff9f43;"># ~/.claude/agents/code-reviewer.md</div>
+                            <div style="margin-top: 8px; color: #b2bec3;">---</div>
+                            <div style="color: #2ed573;">name: code-reviewer</div>
+                            <div style="color: #ffa502;">description: コード変更後に自動でレビュー</div>
+                            <div style="color: #54a0ff;">tools: Read, Grep, Glob, Bash</div>
+                            <div style="color: #a55eea;">model: sonnet</div>
+                            <div style="color: #b2bec3;">---</div>
+                            <div style="margin-top: 8px;">あなたはシニアコードレビュアーです。</div>
+                            <div class="terminal-output">コード品質、セキュリティ、ベストプラクティスを確認してください。</div>
+                        </div>
+                    </div>
+                    <ul class="fragment" style="margin-top: 15px; font-size: 0.9em;">
+                        <li><span class="code-inline">description</span> が重要 - Claudeが自動で使うかの判断基準</li>
+                        <li><span class="code-inline">tools</span> で使えるツールを制限</li>
+                        <li><span class="code-inline">model</span> で使用モデルを指定</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>サブエージェントの活用パターン</h2>
+                    <div class="card-grid">
+                        <div class="card fragment">
+                            <h4>📊 大量出力の隔離</h4>
+                            <p>テスト実行、ログ処理など大量の出力をサブエージェントに閉じ込める</p>
+                            <p class="small-text">「サブエージェントでテスト実行して、失敗だけ報告して」</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>🔀 並列リサーチ</h4>
+                            <p>独立した調査を複数同時に実行</p>
+                            <p class="small-text">「認証、DB、APIモジュールを並列で調査して」</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>🔗 チェーン実行</h4>
+                            <p>サブエージェントを連続で呼び出す</p>
+                            <p class="small-text">「reviewerで問題を見つけて、fixerで修正して」</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>🔄 レジューム</h4>
+                            <p>途中で止まったサブエージェントを再開</p>
+                            <p class="small-text">「さっきのレビューを続けて」</p>
+                        </div>
+                    </div>
+                </section>
+
             </section>
 
             <!-- 3. 効果的な使い方 -->
@@ -1135,6 +1302,7 @@
                     <h2>重要ポイント</h2>
                     <ul>
                         <li class="fragment"><strong>コンテキスト管理が命</strong> - こまめに <span class="code-inline">/clear</span>、サブエージェント活用</li>
+                        <li class="fragment"><strong>サブエージェントを使いこなす</strong> - 重い調査は委譲、並列実行で高速化</li>
                         <li class="fragment"><strong>検証方法を与える</strong> - テスト・型チェック・期待出力を明示</li>
                         <li class="fragment"><strong>Skill で効率化</strong> - 繰り返しタスクはSkillにまとめる</li>
                         <li class="fragment"><strong>公式ドキュメントを読む</strong> - 困ったらまずドキュメントを確認</li>
