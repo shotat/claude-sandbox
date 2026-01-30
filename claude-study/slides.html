@@ -425,10 +425,232 @@
                 </section>
             </section>
 
-            <!-- 2. コンテキスト管理 -->
+            <!-- 2. 環境セットアップ -->
             <section>
                 <section class="section-title">
-                    <h2>2. コンテキスト管理</h2>
+                    <h2>2. 環境セットアップのコツ</h2>
+                    <p style="color: rgba(255,255,255,0.8);">チームで使うための設定</p>
+                </section>
+
+                <section>
+                    <h2>CLAUDE.md とは</h2>
+                    <div class="two-column">
+                        <div class="column">
+                            <div class="highlight-box">
+                                <h4 style="margin-top: 0;">プロジェクトルートに配置</h4>
+                                <p>Claudeが最初に読み込む設定ファイル</p>
+                                <ul>
+                                    <li>プロジェクト固有のルール</li>
+                                    <li>コーディング規約</li>
+                                    <li>よく使うコマンド</li>
+                                    <li>ディレクトリ構成の説明</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="terminal-window" style="font-size: 0.85em;">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot red"></div>
+                                    <div class="terminal-dot yellow"></div>
+                                    <div class="terminal-dot green"></div>
+                                </div>
+                                <div class="terminal-body">
+                                    <div style="color: #ff9f43;"># CLAUDE.md</div>
+                                    <div style="margin-top: 10px;">## テスト実行</div>
+                                    <div class="terminal-output">npm test</div>
+                                    <div style="margin-top: 10px;">## コーディング規約</div>
+                                    <div class="terminal-output">- TypeScript厳格モード</div>
+                                    <div class="terminal-output">- 関数は50行以内</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>CLAUDE.md のコツ</h2>
+                    <div class="two-column">
+                        <div class="column">
+                            <div class="warning-box">
+                                <h4 style="margin-top: 0;">❌ アンチパターン</h4>
+                                <ul>
+                                    <li>長すぎる説明</li>
+                                    <li>古い情報の放置</li>
+                                    <li>矛盾するルール</li>
+                                    <li>当たり前のこと</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="success-box">
+                                <h4 style="margin-top: 0;">✅ ベストプラクティス</h4>
+                                <ul>
+                                    <li>簡潔に要点だけ</li>
+                                    <li>定期的に剪定</li>
+                                    <li>具体的な例示</li>
+                                    <li>プロジェクト固有の情報</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fragment small-text" style="margin-top: 20px;">
+                        CLAUDE.md自体もコンテキストを消費する。長すぎると逆効果。
+                    </p>
+                </section>
+
+                <section>
+                    <h2>その他の設定</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🔐 権限設定</h4>
+                            <p>危険なコマンドの実行制限。<span class="code-inline">rm -rf</span> などを禁止できる。</p>
+                            <p class="small-text">settings.json で設定</p>
+                        </div>
+                        <div class="card">
+                            <h4>🔌 MCP（Model Context Protocol）</h4>
+                            <p>外部ツールとの連携。DB接続、API呼び出しなどを追加できる。</p>
+                            <p class="small-text">プラグインで機能拡張</p>
+                        </div>
+                        <div class="card">
+                            <h4>🪝 フック</h4>
+                            <p>特定アクション時の自動処理。ファイル保存時にlintを走らせるなど。</p>
+                            <p class="small-text">settings.json で設定</p>
+                        </div>
+                        <div class="card">
+                            <h4>📁 .claudeignore</h4>
+                            <p>Claudeに読ませたくないファイルを指定。node_modulesなど。</p>
+                            <p class="small-text">.gitignore と同じ形式</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 3. 効果的な使い方 -->
+            <section>
+                <section class="section-title">
+                    <h2>3. 効果的な使い方</h2>
+                    <p style="color: rgba(255,255,255,0.8);">AIの能力を最大限引き出すコツ</p>
+                </section>
+
+                <section>
+                    <h2>検証方法を与える</h2>
+                    <p>「正しくできたか」をAI自身が判断できるようにする</p>
+                    <div class="two-column" style="margin-top: 30px;">
+                        <div class="column">
+                            <div class="warning-box">
+                                <h4 style="margin-top: 0;">❌ NG例</h4>
+                                <p>「ログイン機能を作って」</p>
+                                <p class="small-text">→ 何をもって完成？</p>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <div class="success-box">
+                                <h4 style="margin-top: 0;">✅ OK例</h4>
+                                <p>「ログイン機能を作って。<br>
+                                <span class="code-inline">npm test</span> が通るようにして」</p>
+                                <p class="small-text">→ テストが通れば完成</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>検証方法の例</h2>
+                    <div class="card-grid">
+                        <div class="card fragment">
+                            <h4>🧪 テストコード</h4>
+                            <p><span class="code-inline">npm test</span> / <span class="code-inline">pytest</span> が通るか</p>
+                            <p class="small-text">最も確実な検証方法</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>📷 スクリーンショット</h4>
+                            <p>期待するUIの画像を提示</p>
+                            <p class="small-text">見た目の確認に有効</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>📝 期待出力</h4>
+                            <p>「このJSONが返ればOK」</p>
+                            <p class="small-text">API開発に有効</p>
+                        </div>
+                        <div class="card fragment">
+                            <h4>🔍 型チェック</h4>
+                            <p><span class="code-inline">tsc</span> がエラーなし</p>
+                            <p class="small-text">TypeScriptプロジェクトに</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>探索 → 計画 → 実装</h2>
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div style="font-size: 1.5em;">🔍</div>
+                            <div><strong>探索</strong></div>
+                            <div class="small-text">関連ファイルを調査</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div style="font-size: 1.5em;">📋</div>
+                            <div><strong>計画</strong></div>
+                            <div class="small-text">変更箇所を洗い出し</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div style="font-size: 1.5em;">💻</div>
+                            <div><strong>実装</strong></div>
+                            <div class="small-text">計画に沿ってコーディング</div>
+                        </div>
+                    </div>
+                    <div class="highlight-box fragment">
+                        <h4 style="margin-top: 0;">Plan Mode を活用</h4>
+                        <p>「まず計画を立てて」「Plan Modeで進めて」と指示すると、いきなり実装せずに計画を提示してくれる。計画を確認してからGoサインを出せる。</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>具体的なコンテキストを提供</h2>
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-body">
+                            <div><span class="terminal-prompt">> </span><span class="terminal-command">@src/auth/login.ts を見て、</span></div>
+                            <div><span class="terminal-command">  パスワードのバリデーションを追加して。</span></div>
+                            <div><span class="terminal-command">  @src/utils/validation.ts の形式に合わせて。</span></div>
+                        </div>
+                    </div>
+                    <ul style="margin-top: 30px;">
+                        <li class="fragment"><strong>@ でファイル参照</strong> - 曖昧に説明するより直接指す</li>
+                        <li class="fragment"><strong>関連ファイルをまとめて</strong> - 参考にすべきコードも渡す</li>
+                        <li class="fragment"><strong>エラーメッセージも貼る</strong> - 「動かない」より具体的なログを</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>良い指示の例</h2>
+                    <div class="success-box">
+                        <p style="margin: 0; font-family: monospace; line-height: 1.8;">
+                            @src/api/users.ts のgetUser関数で、<br>
+                            ユーザーが見つからない場合に404を返すように修正して。<br><br>
+                            @src/api/__tests__/users.test.ts に<br>
+                            404ケースのテストも追加して。<br><br>
+                            npm test が通ることを確認してね。
+                        </p>
+                    </div>
+                    <ul class="fragment" style="margin-top: 20px;">
+                        <li>✅ 対象ファイルを明示</li>
+                        <li>✅ やることが具体的</li>
+                        <li>✅ 検証方法も指定</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- 4. コンテキスト管理 -->
+            <section>
+                <section class="section-title">
+                    <h2>4. コンテキスト管理</h2>
                     <h3 style="color: #fff;">最重要ポイント</h3>
                     <p style="color: rgba(255,255,255,0.8);">これを理解しないと使いこなせない</p>
                 </section>
@@ -559,7 +781,60 @@
                 </section>
 
                 <section>
-                    <h2>対策② サブエージェントで委譲</h2>
+                    <h2>/clear vs /compact</h2>
+                    <p>状況に応じて使い分けよう</p>
+                    <table class="comparison-table" style="margin-top: 20px;">
+                        <tr>
+                            <th></th>
+                            <th><span class="code-inline">/clear</span></th>
+                            <th><span class="code-inline">/compact</span></th>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>履歴</strong></td>
+                            <td>完全にリセット</td>
+                            <td>要約して圧縮</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>文脈</strong></td>
+                            <td>全部消える</td>
+                            <td>圧縮されて残る</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>用途</strong></td>
+                            <td>完全に仕切り直したい時</td>
+                            <td>トークン節約しつつ文脈キープ</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>オプション</strong></td>
+                            <td>なし</td>
+                            <td>フォーカス指示を付けられる</td>
+                        </tr>
+                    </table>
+                    <div class="terminal-window fragment" style="margin-top: 20px; max-width: 600px;">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-body" style="padding: 15px;">
+                            <div><span class="terminal-prompt">> </span><span class="terminal-command">/compact 認証モジュールに集中して</span></div>
+                            <div class="terminal-output" style="margin-top: 10px; color: #2ed573;">✓ Conversation compacted with focus on authentication module</div>
+                        </div>
+                    </div>
+                    <p class="fragment small-text" style="margin-top: 15px;">長時間作業でトークン節約したいけど文脈は残したい → <span class="code-inline">/compact</span> がおすすめ</p>
+                </section>
+
+            </section>
+
+            <!-- 5. サブエージェント -->
+            <section>
+                <section class="section-title">
+                    <h2>5. サブエージェント</h2>
+                    <p style="color: rgba(255,255,255,0.8);">重い処理を委譲してコンテキストを節約</p>
+                </section>
+
+                <section>
+                    <h2>サブエージェントで委譲</h2>
                     <div class="illustration">
                         <svg width="550" height="220" viewBox="0 0 550 220">
                             <!-- メインエージェント -->
@@ -774,232 +1049,10 @@
 
             </section>
 
-            <!-- 3. 効果的な使い方 -->
+            <!-- 6. Slash Command / Skill / Plugin -->
             <section>
                 <section class="section-title">
-                    <h2>3. 効果的な使い方</h2>
-                    <p style="color: rgba(255,255,255,0.8);">AIの能力を最大限引き出すコツ</p>
-                </section>
-
-                <section>
-                    <h2>検証方法を与える</h2>
-                    <p>「正しくできたか」をAI自身が判断できるようにする</p>
-                    <div class="two-column" style="margin-top: 30px;">
-                        <div class="column">
-                            <div class="warning-box">
-                                <h4 style="margin-top: 0;">❌ NG例</h4>
-                                <p>「ログイン機能を作って」</p>
-                                <p class="small-text">→ 何をもって完成？</p>
-                            </div>
-                        </div>
-                        <div class="column fragment">
-                            <div class="success-box">
-                                <h4 style="margin-top: 0;">✅ OK例</h4>
-                                <p>「ログイン機能を作って。<br>
-                                <span class="code-inline">npm test</span> が通るようにして」</p>
-                                <p class="small-text">→ テストが通れば完成</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>検証方法の例</h2>
-                    <div class="card-grid">
-                        <div class="card fragment">
-                            <h4>🧪 テストコード</h4>
-                            <p><span class="code-inline">npm test</span> / <span class="code-inline">pytest</span> が通るか</p>
-                            <p class="small-text">最も確実な検証方法</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4>📷 スクリーンショット</h4>
-                            <p>期待するUIの画像を提示</p>
-                            <p class="small-text">見た目の確認に有効</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4>📝 期待出力</h4>
-                            <p>「このJSONが返ればOK」</p>
-                            <p class="small-text">API開発に有効</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4>🔍 型チェック</h4>
-                            <p><span class="code-inline">tsc</span> がエラーなし</p>
-                            <p class="small-text">TypeScriptプロジェクトに</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>探索 → 計画 → 実装</h2>
-                    <div class="flow-diagram">
-                        <div class="flow-step">
-                            <div style="font-size: 1.5em;">🔍</div>
-                            <div><strong>探索</strong></div>
-                            <div class="small-text">関連ファイルを調査</div>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">
-                            <div style="font-size: 1.5em;">📋</div>
-                            <div><strong>計画</strong></div>
-                            <div class="small-text">変更箇所を洗い出し</div>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">
-                            <div style="font-size: 1.5em;">💻</div>
-                            <div><strong>実装</strong></div>
-                            <div class="small-text">計画に沿ってコーディング</div>
-                        </div>
-                    </div>
-                    <div class="highlight-box fragment">
-                        <h4 style="margin-top: 0;">Plan Mode を活用</h4>
-                        <p>「まず計画を立てて」「Plan Modeで進めて」と指示すると、いきなり実装せずに計画を提示してくれる。計画を確認してからGoサインを出せる。</p>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>具体的なコンテキストを提供</h2>
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                        </div>
-                        <div class="terminal-body">
-                            <div><span class="terminal-prompt">> </span><span class="terminal-command">@src/auth/login.ts を見て、</span></div>
-                            <div><span class="terminal-command">  パスワードのバリデーションを追加して。</span></div>
-                            <div><span class="terminal-command">  @src/utils/validation.ts の形式に合わせて。</span></div>
-                        </div>
-                    </div>
-                    <ul style="margin-top: 30px;">
-                        <li class="fragment"><strong>@ でファイル参照</strong> - 曖昧に説明するより直接指す</li>
-                        <li class="fragment"><strong>関連ファイルをまとめて</strong> - 参考にすべきコードも渡す</li>
-                        <li class="fragment"><strong>エラーメッセージも貼る</strong> - 「動かない」より具体的なログを</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>良い指示の例</h2>
-                    <div class="success-box">
-                        <p style="margin: 0; font-family: monospace; line-height: 1.8;">
-                            @src/api/users.ts のgetUser関数で、<br>
-                            ユーザーが見つからない場合に404を返すように修正して。<br><br>
-                            @src/api/__tests__/users.test.ts に<br>
-                            404ケースのテストも追加して。<br><br>
-                            npm test が通ることを確認してね。
-                        </p>
-                    </div>
-                    <ul class="fragment" style="margin-top: 20px;">
-                        <li>✅ 対象ファイルを明示</li>
-                        <li>✅ やることが具体的</li>
-                        <li>✅ 検証方法も指定</li>
-                    </ul>
-                </section>
-            </section>
-
-            <!-- 4. 環境セットアップ -->
-            <section>
-                <section class="section-title">
-                    <h2>4. 環境セットアップのコツ</h2>
-                    <p style="color: rgba(255,255,255,0.8);">チームで使うための設定</p>
-                </section>
-
-                <section>
-                    <h2>CLAUDE.md とは</h2>
-                    <div class="two-column">
-                        <div class="column">
-                            <div class="highlight-box">
-                                <h4 style="margin-top: 0;">プロジェクトルートに配置</h4>
-                                <p>Claudeが最初に読み込む設定ファイル</p>
-                                <ul>
-                                    <li>プロジェクト固有のルール</li>
-                                    <li>コーディング規約</li>
-                                    <li>よく使うコマンド</li>
-                                    <li>ディレクトリ構成の説明</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="terminal-window" style="font-size: 0.85em;">
-                                <div class="terminal-header">
-                                    <div class="terminal-dot red"></div>
-                                    <div class="terminal-dot yellow"></div>
-                                    <div class="terminal-dot green"></div>
-                                </div>
-                                <div class="terminal-body">
-                                    <div style="color: #ff9f43;"># CLAUDE.md</div>
-                                    <div style="margin-top: 10px;">## テスト実行</div>
-                                    <div class="terminal-output">npm test</div>
-                                    <div style="margin-top: 10px;">## コーディング規約</div>
-                                    <div class="terminal-output">- TypeScript厳格モード</div>
-                                    <div class="terminal-output">- 関数は50行以内</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>CLAUDE.md のコツ</h2>
-                    <div class="two-column">
-                        <div class="column">
-                            <div class="warning-box">
-                                <h4 style="margin-top: 0;">❌ アンチパターン</h4>
-                                <ul>
-                                    <li>長すぎる説明</li>
-                                    <li>古い情報の放置</li>
-                                    <li>矛盾するルール</li>
-                                    <li>当たり前のこと</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="success-box">
-                                <h4 style="margin-top: 0;">✅ ベストプラクティス</h4>
-                                <ul>
-                                    <li>簡潔に要点だけ</li>
-                                    <li>定期的に剪定</li>
-                                    <li>具体的な例示</li>
-                                    <li>プロジェクト固有の情報</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="fragment small-text" style="margin-top: 20px;">
-                        CLAUDE.md自体もコンテキストを消費する。長すぎると逆効果。
-                    </p>
-                </section>
-
-                <section>
-                    <h2>その他の設定</h2>
-                    <div class="card-grid">
-                        <div class="card">
-                            <h4>🔐 権限設定</h4>
-                            <p>危険なコマンドの実行制限。<span class="code-inline">rm -rf</span> などを禁止できる。</p>
-                            <p class="small-text">settings.json で設定</p>
-                        </div>
-                        <div class="card">
-                            <h4>🔌 MCP（Model Context Protocol）</h4>
-                            <p>外部ツールとの連携。DB接続、API呼び出しなどを追加できる。</p>
-                            <p class="small-text">プラグインで機能拡張</p>
-                        </div>
-                        <div class="card">
-                            <h4>🪝 フック</h4>
-                            <p>特定アクション時の自動処理。ファイル保存時にlintを走らせるなど。</p>
-                            <p class="small-text">hooks.json で設定</p>
-                        </div>
-                        <div class="card">
-                            <h4>📁 .claudeignore</h4>
-                            <p>Claudeに読ませたくないファイルを指定。node_modulesなど。</p>
-                            <p class="small-text">.gitignore と同じ形式</p>
-                        </div>
-                    </div>
-                </section>
-            </section>
-
-            <!-- 5. Slash Command / Skill / Plugin -->
-            <section>
-                <section class="section-title">
-                    <h2>5. Slash Command / Skill / Plugin</h2>
+                    <h2>6. Slash Command / Skill / Plugin</h2>
                     <p style="color: rgba(255,255,255,0.8);">カスタマイズと拡張の仕組み</p>
                 </section>
 
@@ -1138,25 +1191,6 @@
                     <p class="fragment small-text" style="margin-top: 15px; text-align: center;">詳しい手順はハンズオンで実践</p>
                 </section>
 
-            </section>
-
-            <!-- 6. まとめ -->
-            <section>
-                <section class="section-title">
-                    <h2>6. まとめ</h2>
-                </section>
-
-                <section>
-                    <h2>重要ポイント</h2>
-                    <ul>
-                        <li class="fragment"><strong>コンテキスト管理が命</strong> - こまめに <span class="code-inline">/clear</span>、サブエージェント活用</li>
-                        <li class="fragment"><strong>サブエージェントを使いこなす</strong> - 重い調査は委譲、並列実行で高速化</li>
-                        <li class="fragment"><strong>検証方法を与える</strong> - テスト・型チェック・期待出力を明示</li>
-                        <li class="fragment"><strong>Skill で効率化</strong> - 繰り返しタスクはSkillにまとめる</li>
-                        <li class="fragment"><strong>公式ドキュメントを読む</strong> - 困ったらまずドキュメントを確認</li>
-                        <li class="fragment"><strong>こまめにキャッチアップ</strong> - アップデートが早いので定期的にチェック</li>
-                    </ul>
-                </section>
             </section>
 
             <!-- 7. ハンズオン -->
@@ -1421,6 +1455,25 @@
                         </ul>
                     </div>
                 </section>
+            </section>
+
+            <!-- 8. まとめ -->
+            <section>
+                <section class="section-title">
+                    <h2>8. まとめ</h2>
+                </section>
+
+                <section>
+                    <h2>重要ポイント</h2>
+                    <ul>
+                        <li class="fragment"><strong>コンテキスト管理が命</strong> - <span class="code-inline">/clear</span> or <span class="code-inline">/compact</span>、サブエージェント活用</li>
+                        <li class="fragment"><strong>サブエージェントを使いこなす</strong> - 重い調査は委譲、並列実行で高速化</li>
+                        <li class="fragment"><strong>検証方法を与える</strong> - テスト・型チェック・期待出力を明示</li>
+                        <li class="fragment"><strong>Skill で効率化</strong> - 繰り返しタスクはSkillにまとめる</li>
+                        <li class="fragment"><strong>公式ドキュメントを読む</strong> - 困ったらまずドキュメントを確認</li>
+                        <li class="fragment"><strong>こまめにキャッチアップ</strong> - アップデートが早いので定期的にチェック</li>
+                    </ul>
+                </section>
 
                 <section data-background="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)">
                     <div class="illustration float-animation">
@@ -1431,64 +1484,6 @@
                     </div>
                     <h2>Happy Coding with Claude!</h2>
                     <p style="color: #b2bec3; margin-top: 30px;">質問があればどうぞ</p>
-                </section>
-            </section>
-
-            <!-- 補足 -->
-            <section>
-                <section class="section-title">
-                    <h2>補足</h2>
-                    <p style="color: rgba(255,255,255,0.8);">時間があれば</p>
-                </section>
-
-                <section>
-                    <h2>よくある失敗パターン</h2>
-                    <div class="card-grid">
-                        <div class="card fragment">
-                            <h4 style="color: #ff4757;">🌀 コンテキスト溢れで暴走</h4>
-                            <p>対策: 動作が怪しくなったら /clear</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4 style="color: #ff4757;">✅ 検証なしで「完了」</h4>
-                            <p>対策: テストや期待出力を必ず指定</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4 style="color: #ff4757;">📁 関係ないファイルも変更</h4>
-                            <p>対策: 対象ファイルを明示的に指定</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4 style="color: #ff4757;">♾️ 同じエラーの無限ループ</h4>
-                            <p>対策: 一度 /clear してやり直し</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>その他のツール</h2>
-                    <div class="card-grid">
-                        <div class="card">
-                            <h4>👥 Claude Cowork</h4>
-                            <p>複数エージェントの協調作業。大規模なリファクタリングなどに。</p>
-                        </div>
-                        <div class="card">
-                            <h4>📊 Claude in Excel</h4>
-                            <p>スプレッドシートでClaudeを活用。データ分析に便利。</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>参考リンク</h2>
-                    <div class="highlight-box">
-                        <ul style="font-size: 0.9em;">
-                            <li><strong>公式ドキュメント</strong> - docs.anthropic.com</li>
-                            <li><strong>Claude Code GitHub</strong> - github.com/anthropics/claude-code</li>
-                            <li><strong>Best Practices</strong> - 公式のベストプラクティスガイド</li>
-                        </ul>
-                    </div>
-                    <p class="fragment" style="margin-top: 30px; color: #ff9f43;">
-                        アップデートが頻繁なので、定期的にチェックしよう
-                    </p>
                 </section>
             </section>
 
