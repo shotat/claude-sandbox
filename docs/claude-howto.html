@@ -168,6 +168,28 @@
             0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 159, 67, 0.6)); }
             50% { filter: drop-shadow(0 0 25px rgba(255, 159, 67, 0.9)); }
         }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; filter: drop-shadow(0 0 10px #ff0000); }
+            14% { filter: drop-shadow(0 0 15px #ff7f00); }
+            28% { filter: drop-shadow(0 0 20px #ffff00); }
+            42% { filter: drop-shadow(0 0 15px #00ff00); }
+            57% { filter: drop-shadow(0 0 20px #0000ff); }
+            71% { filter: drop-shadow(0 0 15px #8f00ff); }
+            85% { filter: drop-shadow(0 0 20px #ff00ff); }
+            100% { background-position: 300% 50%; filter: drop-shadow(0 0 10px #ff0000); }
+        }
+        .reveal h1.rainbow-text {
+            background: linear-gradient(90deg,
+                #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8f00ff, #ff00ff,
+                #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8f00ff, #ff00ff,
+                #ff0000) !important;
+            background-size: 400% auto !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            animation: rainbow 1.5s linear infinite !important;
+            text-shadow: none !important;
+        }
         @keyframes shimmer {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
@@ -449,7 +471,7 @@
                         <text x="60" y="70" text-anchor="middle" fill="white" font-size="40" font-weight="bold">CC</text>
                     </svg>
                 </div>
-                <h1>Claude Code 勉強会</h1>
+                <h1 class="rainbow-text">Claude Code 勉強会</h1>
                 <p style="font-size: 1.3em; color: #b2bec3;">エージェント型AIコーディングツールを使いこなす</p>
             </section>
 
