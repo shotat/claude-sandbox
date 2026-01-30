@@ -505,6 +505,37 @@
                 </section>
 
                 <section>
+                    <h2>コンテキスト使用量の確認方法</h2>
+                    <p><span class="code-inline">/statusline</span> でターミナル下部にリアルタイム表示</p>
+                    <div class="terminal-window" style="margin-top: 15px; max-width: 600px;">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-body" style="padding: 15px;">
+                            <div style="padding: 8px; background: #2d3436; border-radius: 5px;">
+                                <span style="color: #54a0ff;">[Opus]</span> <span style="color: #ffa502;">Context: 42.5%</span> <span style="color: #636e72;">│</span> <span style="color: #2ed573;">$0.12</span> <span style="color: #636e72;">│</span> <span style="color: #b2bec3;">📁 my-project</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two-column" style="margin-top: 20px;">
+                        <div class="column">
+                            <ul style="font-size: 0.9em;">
+                                <li><strong>Context %</strong> - 使用率を常に把握</li>
+                                <li><strong>Cost</strong> - セッションの費用</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <ul style="font-size: 0.9em;">
+                                <li>50%超 → そろそろ注意</li>
+                                <li>80%超 → /clear を検討</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
                     <h2>対策① /clear でリセット</h2>
                     <div class="terminal-window">
                         <div class="terminal-header">
@@ -809,95 +840,69 @@
                 <section>
                     <h2>用語の整理</h2>
                     <div class="illustration">
-                        <svg width="700" height="280" viewBox="0 0 700 280">
-                            <!-- Slash Command -->
+                        <svg width="700" height="300" viewBox="0 0 700 300">
+                            <!-- Slash Command（大枠） -->
+                            <rect x="20" y="20" width="420" height="180" rx="15" fill="rgba(84,160,255,0.1)" stroke="#54a0ff" stroke-width="2"/>
+                            <text x="230" y="45" text-anchor="middle" fill="#54a0ff" font-size="14" font-weight="bold">Slash Command（「/」で呼び出すコマンド）</text>
+                            <!-- Built-in -->
                             <g>
-                                <rect x="30" y="30" width="180" height="100" rx="15" fill="rgba(84,160,255,0.2)" stroke="#54a0ff" stroke-width="2"/>
-                                <text x="120" y="60" text-anchor="middle" fill="#54a0ff" font-size="14" font-weight="bold">Slash Command</text>
-                                <text x="120" y="85" text-anchor="middle" fill="#b2bec3" font-size="11">/clear, /help など</text>
-                                <text x="120" y="105" text-anchor="middle" fill="#b2bec3" font-size="11">組み込みコマンド</text>
+                                <rect x="40" y="60" width="170" height="80" rx="10" fill="rgba(84,160,255,0.2)" stroke="#54a0ff" stroke-width="1"/>
+                                <text x="125" y="85" text-anchor="middle" fill="#54a0ff" font-size="12" font-weight="bold">Built-in</text>
+                                <text x="125" y="105" text-anchor="middle" fill="#b2bec3" font-size="9">/clear /help /compact</text>
+                                <text x="125" y="125" text-anchor="middle" fill="#636e72" font-size="8">組み込み（変更不可）</text>
                             </g>
-                            <!-- Skill -->
+                            <!-- Custom -->
                             <g>
-                                <rect x="260" y="30" width="180" height="100" rx="15" fill="rgba(255,159,67,0.2)" stroke="#ff9f43" stroke-width="2"/>
-                                <text x="350" y="60" text-anchor="middle" fill="#ff9f43" font-size="14" font-weight="bold">Skill</text>
-                                <text x="350" y="85" text-anchor="middle" fill="#b2bec3" font-size="11">カスタム命令セット</text>
-                                <text x="350" y="105" text-anchor="middle" fill="#b2bec3" font-size="11">SKILL.md で定義</text>
+                                <rect x="230" y="60" width="190" height="120" rx="10" fill="rgba(255,159,67,0.2)" stroke="#ff9f43" stroke-width="1"/>
+                                <text x="325" y="85" text-anchor="middle" fill="#ff9f43" font-size="12" font-weight="bold">Custom（ユーザー作成）</text>
+                                <text x="325" y="108" text-anchor="middle" fill="#b2bec3" font-size="9">.claude/commands/（レガシー）</text>
+                                <text x="325" y="128" text-anchor="middle" fill="#2ed573" font-size="9" font-weight="bold">.claude/skills/（推奨=Skill）</text>
+                                <text x="325" y="150" text-anchor="middle" fill="#ffeaa7" font-size="8">★ Skill は自動起動も可能</text>
+                                <text x="325" y="168" text-anchor="middle" fill="#636e72" font-size="8">サポートファイル、フロントマター制御</text>
                             </g>
                             <!-- Plugin -->
                             <g>
-                                <rect x="490" y="30" width="180" height="100" rx="15" fill="rgba(165,94,234,0.2)" stroke="#a55eea" stroke-width="2"/>
-                                <text x="580" y="60" text-anchor="middle" fill="#a55eea" font-size="14" font-weight="bold">Plugin</text>
-                                <text x="580" y="85" text-anchor="middle" fill="#b2bec3" font-size="11">配布可能なパッケージ</text>
-                                <text x="580" y="105" text-anchor="middle" fill="#b2bec3" font-size="11">Skillを含む</text>
+                                <rect x="490" y="60" width="180" height="100" rx="15" fill="rgba(165,94,234,0.2)" stroke="#a55eea" stroke-width="2"/>
+                                <text x="580" y="85" text-anchor="middle" fill="#a55eea" font-size="14" font-weight="bold">Plugin</text>
+                                <text x="580" y="105" text-anchor="middle" fill="#b2bec3" font-size="10">配布可能なパッケージ</text>
+                                <text x="580" y="125" text-anchor="middle" fill="#b2bec3" font-size="9">Skills, Agents, Hooks, MCP</text>
                             </g>
-                            <!-- 矢印と説明 -->
-                            <path d="M220 80 L250 80" stroke="#ff9f43" stroke-width="2" marker-end="url(#arrow)"/>
-                            <path d="M450 80 L480 80" stroke="#a55eea" stroke-width="2" marker-end="url(#arrow)"/>
+                            <!-- Plugin → Custom の矢印 -->
+                            <path d="M490 110 L430 110" stroke="#a55eea" stroke-width="2" marker-end="url(#arrow)"/>
+                            <text x="460" y="100" text-anchor="middle" fill="#636e72" font-size="8">含む</text>
                             <!-- Marketplace -->
-                            <rect x="200" y="170" width="300" height="80" rx="15" fill="rgba(46,213,115,0.2)" stroke="#2ed573" stroke-width="2"/>
-                            <text x="350" y="200" text-anchor="middle" fill="#2ed573" font-size="14" font-weight="bold">Marketplace</text>
-                            <text x="350" y="225" text-anchor="middle" fill="#b2bec3" font-size="11">Pluginを公開・インストールできる場所</text>
+                            <rect x="200" y="220" width="300" height="60" rx="15" fill="rgba(46,213,115,0.2)" stroke="#2ed573" stroke-width="2"/>
+                            <text x="350" y="248" text-anchor="middle" fill="#2ed573" font-size="14" font-weight="bold">Marketplace</text>
+                            <text x="350" y="268" text-anchor="middle" fill="#b2bec3" font-size="10">Pluginを公開・インストールできる場所</text>
                             <!-- 矢印 -->
-                            <path d="M580 140 L580 160 L510 160" stroke="#2ed573" stroke-width="2" stroke-dasharray="5,5"/>
-                            <path d="M350 140 L350 160" stroke="#2ed573" stroke-width="2" stroke-dasharray="5,5"/>
+                            <path d="M580 170 L580 210 L510 210" stroke="#2ed573" stroke-width="2" stroke-dasharray="5,5"/>
                         </svg>
                     </div>
                 </section>
 
                 <section>
-                    <h2>Slash Command（組み込み）</h2>
-                    <table class="comparison-table">
-                        <tr>
-                            <th>コマンド</th>
-                            <th>説明</th>
-                        </tr>
-                        <tr class="fragment">
-                            <td><span class="code-inline">/clear</span></td>
-                            <td>コンテキストをクリア</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><span class="code-inline">/help</span></td>
-                            <td>ヘルプを表示</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><span class="code-inline">/compact</span></td>
-                            <td>会話を要約してコンテキスト節約</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><span class="code-inline">/config</span></td>
-                            <td>設定を表示・変更</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><span class="code-inline">/status</span></td>
-                            <td>現在の状態を表示</td>
-                        </tr>
-                    </table>
-                    <p class="small-text fragment">他にも多数あり。/help で確認できる。</p>
-                </section>
-
-                <section>
-                    <h2>Skill（カスタム命令セット）</h2>
+                    <h2>Slash Command の種類</h2>
                     <div class="two-column">
                         <div class="column">
                             <div class="highlight-box">
-                                <h4 style="margin-top: 0;">何ができる？</h4>
-                                <ul>
-                                    <li>特定タスクの手順を定義</li>
-                                    <li><span class="code-inline">/skill名</span> で呼び出し</li>
-                                    <li>プロンプトのテンプレート化</li>
-                                    <li>チームで共有可能</li>
-                                </ul>
+                                <h4 style="margin-top: 0;">Built-in（組み込み）</h4>
+                                <table style="font-size: 0.85em; width: 100%;">
+                                    <tr><td><span class="code-inline">/clear</span></td><td>コンテキストをクリア</td></tr>
+                                    <tr><td><span class="code-inline">/help</span></td><td>ヘルプを表示</td></tr>
+                                    <tr><td><span class="code-inline">/compact</span></td><td>コンテキスト圧縮</td></tr>
+                                    <tr><td><span class="code-inline">/config</span></td><td>設定を変更</td></tr>
+                                    <tr><td><span class="code-inline">/stats</span></td><td>使用統計を表示</td></tr>
+                                </table>
+                                <p class="small-text" style="margin-bottom: 0;">/help で全コマンド確認</p>
                             </div>
                         </div>
                         <div class="column">
-                            <div class="highlight-box">
-                                <h4 style="margin-top: 0;">例</h4>
-                                <ul>
-                                    <li><span class="code-inline">/review-pr</span> - PRレビュー</li>
-                                    <li><span class="code-inline">/commit</span> - コミット作成</li>
-                                    <li><span class="code-inline">/fix</span> - バグ修正</li>
-                                    <li><span class="code-inline">/test</span> - テスト作成</li>
+                            <div class="highlight-box" style="border-left-color: #ff9f43;">
+                                <h4 style="margin-top: 0; color: #ff9f43;">Custom（ユーザー作成）</h4>
+                                <p>自分でSlash Commandを作成可能</p>
+                                <ul style="font-size: 0.85em;">
+                                    <li><span class="code-inline">.claude/commands/</span><br><span class="small-text">レガシー方式</span></li>
+                                    <li><span class="code-inline">.claude/skills/</span><br><span class="small-text" style="color: #2ed573;">推奨方式（Skill）</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -905,28 +910,134 @@
                 </section>
 
                 <section>
+                    <h2>Skill = Custom Commandの強化版</h2>
+                    <div class="highlight-box">
+                        <p style="margin: 0;"><span class="code-inline">.claude/skills/</span> で作成する Custom Command。レガシー方式より機能が豊富。</p>
+                    </div>
+                    <table class="comparison-table" style="margin-top: 20px;">
+                        <tr>
+                            <th>機能</th>
+                            <th>レガシー (.claude/commands/)</th>
+                            <th>Skill (.claude/skills/)</th>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>自動起動</strong></td>
+                            <td>❌ 不可</td>
+                            <td>✅ Claudeが判断して自動適用</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>サポートファイル</strong></td>
+                            <td>❌ 単一ファイル</td>
+                            <td>✅ ディレクトリ構造</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>フロントマター制御</strong></td>
+                            <td>△ 制限的</td>
+                            <td>✅ 豊富なオプション</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>サブエージェント</strong></td>
+                            <td>❌ 不可</td>
+                            <td>✅ context: fork で可能</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Skillの自動起動</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🤖 自動起動とは</h4>
+                            <p><span class="code-inline">description</span> が会話に関連しそうだと、<strong>Claudeが自動的にSkillを適用</strong></p>
+                            <p class="small-text">例: 「コードを説明して」→ explain-code Skillが自動起動</p>
+                        </div>
+                        <div class="card">
+                            <h4>👆 手動呼び出しも可能</h4>
+                            <p><span class="code-inline">/skill名</span> でユーザーが明示的に呼び出すこともできる</p>
+                            <p class="small-text">例: /commit, /review-pr, /deploy</p>
+                        </div>
+                    </div>
+                    <div class="success-box fragment" style="margin-top: 20px;">
+                        <p style="margin: 0; text-align: center;"><strong>自動起動</strong> = 毎回指示しなくても、Claudeが勝手に判断して適切な手順を使ってくれる</p>
+                    </div>
+                </section>
+
+                <section>
                     <h2>Skillの作り方</h2>
-                    <div class="terminal-window">
+                    <div class="two-column">
+                        <div class="column">
+                            <div class="terminal-window" style="font-size: 0.85em;">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot red"></div>
+                                    <div class="terminal-dot yellow"></div>
+                                    <div class="terminal-dot green"></div>
+                                </div>
+                                <div class="terminal-body" style="padding: 12px;">
+                                    <div style="color: #ff9f43; font-size: 0.9em;"># .claude/skills/explain-code/SKILL.md</div>
+                                    <div style="margin-top: 8px; color: #b2bec3;">---</div>
+                                    <div style="color: #2ed573;">name: explain-code</div>
+                                    <div style="color: #ffa502;">description: コードを図解で説明する</div>
+                                    <div style="color: #b2bec3;">---</div>
+                                    <div style="margin-top: 8px;"># 手順</div>
+                                    <div class="terminal-output">1. 概要を説明</div>
+                                    <div class="terminal-output">2. 処理フローを図示</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="warning-box" style="margin-top: 0;">
+                                <h4 style="margin-top: 0; color: #e74c3c;">description が超重要</h4>
+                                <p style="margin-bottom: 0;">Claudeが自動起動するかどうかの判断基準になる</p>
+                            </div>
+                            <div class="highlight-box fragment" style="margin-top: 15px;">
+                                <h4 style="margin-top: 0;">配置場所</h4>
+                                <ul style="margin-bottom: 0; font-size: 0.9em;">
+                                    <li><span class="code-inline">~/.claude/skills/</span> 全プロジェクト</li>
+                                    <li><span class="code-inline">.claude/skills/</span> このプロジェクトのみ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>自動起動を制御する</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>🚫 disable-model-invocation: true</h4>
+                            <p>Claudeの自動起動を禁止。ユーザーが <span class="code-inline">/skill名</span> で呼び出した時だけ実行。</p>
+                            <p class="small-text" style="color: #ff9f43;">デプロイ、コミットなど副作用のある操作に推奨</p>
+                        </div>
+                        <div class="card">
+                            <h4>👻 user-invocable: false</h4>
+                            <p>ユーザーは呼び出せない。Claudeが背景知識として参照するだけ。</p>
+                            <p class="small-text" style="color: #54a0ff;">コーディング規約、スタイルガイドなどに</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>skill-creator で簡単作成</h2>
+                    <div class="highlight-box">
+                        <p style="margin: 0;">対話形式でSkillを作成できるツール。手動でSKILL.mdを書かなくてOK。</p>
+                    </div>
+                    <div class="terminal-window fragment" style="margin-top: 20px;">
                         <div class="terminal-header">
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
                             <div class="terminal-dot green"></div>
                         </div>
                         <div class="terminal-body">
-                            <div style="color: #ff9f43;"># .claude/skills/my-skill/SKILL.md</div>
-                            <div style="margin-top: 10px; color: #b2bec3;">---</div>
-                            <div style="color: #2ed573;">name: my-skill</div>
-                            <div style="color: #2ed573;">description: 私のカスタムスキル</div>
-                            <div style="color: #b2bec3;">---</div>
-                            <div style="margin-top: 10px;"># 手順</div>
-                            <div class="terminal-output">1. まず○○を確認する</div>
-                            <div class="terminal-output">2. △△を実行する</div>
-                            <div class="terminal-output">3. 結果を□□形式で報告</div>
+                            <div><span class="terminal-prompt">> </span><span class="terminal-command">skill-creator を使って、コードレビューするスキルを作って</span></div>
+                            <div class="terminal-output" style="margin-top: 10px;">スキル名は何にしますか？</div>
+                            <div class="terminal-output">どんな時に自動起動させますか？</div>
+                            <div class="terminal-output">...</div>
+                            <div class="terminal-output" style="color: #2ed573; margin-top: 5px;">✓ .claude/skills/code-review/SKILL.md を作成しました</div>
                         </div>
                     </div>
-                    <p class="fragment" style="margin-top: 20px;">
-                        <span class="code-inline">skill-creator</span> を使うと対話的に作成できる
-                    </p>
+                    <div class="warning-box fragment" style="margin-top: 15px;">
+                        <p style="margin: 0;"><strong>事前準備:</strong> <span class="code-inline">/plugin install example-skills@anthropic-agent-skills</span> でインストールが必要</p>
+                    </div>
                 </section>
 
                 <section>
@@ -935,9 +1046,10 @@
                         <div class="card">
                             <h4>📦 Pluginに含まれるもの</h4>
                             <ul>
-                                <li>Skill（複数可）</li>
+                                <li>Skills（複数可）</li>
+                                <li>Agents</li>
+                                <li>Hooks</li>
                                 <li>MCPサーバー設定</li>
-                                <li>カスタム設定</li>
                             </ul>
                         </div>
                         <div class="card">
@@ -953,60 +1065,64 @@
 
                 <section>
                     <h2>Marketplace</h2>
-                    <div class="illustration">
-                        <svg width="600" height="200" viewBox="0 0 600 200">
-                            <!-- ストアアイコン -->
-                            <rect x="230" y="20" width="140" height="80" rx="15" fill="url(#grad1)"/>
-                            <text x="300" y="55" text-anchor="middle" fill="white" font-size="20">🏪</text>
-                            <text x="300" y="80" text-anchor="middle" fill="white" font-size="14">Marketplace</text>
-
-                            <!-- 矢印と説明 -->
-                            <g class="fragment">
-                                <path d="M300 110 L200 160" stroke="#54a0ff" stroke-width="2"/>
-                                <rect x="100" y="150" width="120" height="40" rx="8" fill="#54a0ff"/>
-                                <text x="160" y="175" text-anchor="middle" fill="white" font-size="12">インストール</text>
-                            </g>
-                            <g class="fragment">
-                                <path d="M300 110 L400 160" stroke="#2ed573" stroke-width="2"/>
-                                <rect x="340" y="150" width="120" height="40" rx="8" fill="#2ed573"/>
-                                <text x="400" y="175" text-anchor="middle" fill="#1a1a2e" font-size="12">公開する</text>
-                            </g>
-                        </svg>
+                    <div class="highlight-box">
+                        <p style="margin: 0;">Pluginを公開・共有できる場所。GitHubリポジトリをMarketplaceとして登録する仕組み。</p>
                     </div>
-                    <div class="terminal-window fragment">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
+                    <div class="two-column" style="margin-top: 20px;">
+                        <div class="column">
+                            <h4 style="color: #54a0ff;">1. Marketplaceを追加</h4>
+                            <div class="terminal-window" style="font-size: 0.8em;">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot red"></div>
+                                    <div class="terminal-dot yellow"></div>
+                                    <div class="terminal-dot green"></div>
+                                </div>
+                                <div class="terminal-body" style="padding: 10px;">
+                                    <div><span class="terminal-prompt">> </span><span class="terminal-command">/plugin marketplace add anthropics/skills</span></div>
+                                    <div class="terminal-output" style="color: #2ed573;">✓ Marketplace added</div>
+                                </div>
+                            </div>
+                            <p class="small-text">公式: <span class="code-inline">anthropics/skills</span></p>
                         </div>
-                        <div class="terminal-body">
-                            <div><span class="terminal-prompt">> </span><span class="terminal-command">/install @anthropic/analysis</span></div>
-                            <div class="terminal-output" style="margin-top: 10px; color: #2ed573;">✓ Plugin installed successfully!</div>
+                        <div class="column">
+                            <h4 style="color: #2ed573;">2. Pluginをインストール</h4>
+                            <div class="terminal-window" style="font-size: 0.8em;">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot red"></div>
+                                    <div class="terminal-dot yellow"></div>
+                                    <div class="terminal-dot green"></div>
+                                </div>
+                                <div class="terminal-body" style="padding: 10px;">
+                                    <div><span class="terminal-prompt">> </span><span class="terminal-command">/plugin install example-skills</span></div>
+                                    <div class="terminal-output" style="color: #2ed573;">✓ Plugin installed</div>
+                                </div>
+                            </div>
+                            <p class="small-text">または <span class="code-inline">/plugin</span> で対話的に選択</p>
                         </div>
                     </div>
                 </section>
 
                 <section>
-                    <h2>Skillの活用例</h2>
-                    <div class="card-grid">
-                        <div class="card fragment">
-                            <h4>📝 /commit</h4>
-                            <p>変更内容を分析して適切なコミットメッセージを自動生成</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4>🔍 /review-pr</h4>
-                            <p>PRの差分を確認してレビューコメントを作成</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4>🧪 /test</h4>
-                            <p>指定した関数のユニットテストを自動生成</p>
-                        </div>
-                        <div class="card fragment">
-                            <h4>📚 /docs</h4>
-                            <p>コードからドキュメントを自動生成</p>
-                        </div>
+                    <h2>公式Plugin一覧</h2>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Plugin名</th>
+                            <th>内容</th>
+                        </tr>
+                        <tr class="fragment">
+                            <td><span class="code-inline">document-skills</span></td>
+                            <td>Excel, Word, PowerPoint, PDF の操作</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><span class="code-inline">example-skills</span></td>
+                            <td>skill-creator, mcp-builder, frontend-design など</td>
+                        </tr>
+                    </table>
+                    <div class="success-box fragment" style="margin-top: 20px;">
+                        <p style="margin: 0; text-align: center;">まずは <span class="code-inline">example-skills</span> をインストールして skill-creator を試してみよう</p>
                     </div>
                 </section>
+
             </section>
 
             <!-- 6. まとめ -->
@@ -1120,6 +1236,9 @@
             center: true,
             width: 1200,
             height: 700,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 1.5,
             plugins: [ RevealHighlight ]
         });
     </script>
