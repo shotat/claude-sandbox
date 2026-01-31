@@ -532,6 +532,228 @@
 <body>
     <div class="reveal">
         <div class="slides">
+            <!-- AI Generated Notice -->
+            <section data-background="linear-gradient(135deg, #0f0f23 0%, #1a0a2e 50%, #0a1628 100%)">
+                <style>
+                    @keyframes glitch {
+                        0% { transform: translate(0); }
+                        20% { transform: translate(-5px, 5px); }
+                        40% { transform: translate(-5px, -5px); }
+                        60% { transform: translate(5px, 5px); }
+                        80% { transform: translate(5px, -5px); }
+                        100% { transform: translate(0); }
+                    }
+                    @keyframes glitch-skew {
+                        0% { transform: skew(0deg); }
+                        10% { transform: skew(5deg); }
+                        20% { transform: skew(-5deg); }
+                        30% { transform: skew(3deg); }
+                        40% { transform: skew(-3deg); }
+                        50% { transform: skew(0deg); }
+                        100% { transform: skew(0deg); }
+                    }
+                    @keyframes neon-pulse {
+                        0%, 100% {
+                            text-shadow: 0 0 10px #D97757, 0 0 20px #D97757, 0 0 30px #D97757, 0 0 40px #ff6b35;
+                            opacity: 1;
+                        }
+                        50% {
+                            text-shadow: 0 0 5px #D97757, 0 0 10px #D97757, 0 0 15px #D97757, 0 0 20px #ff6b35;
+                            opacity: 0.8;
+                        }
+                    }
+                    @keyframes electric-border {
+                        0%, 100% {
+                            box-shadow: 0 0 20px #00ffff, inset 0 0 20px rgba(0,255,255,0.1);
+                            border-color: #00ffff;
+                        }
+                        25% {
+                            box-shadow: 0 0 40px #ff00ff, inset 0 0 30px rgba(255,0,255,0.2);
+                            border-color: #ff00ff;
+                        }
+                        50% {
+                            box-shadow: 0 0 30px #ffff00, inset 0 0 25px rgba(255,255,0,0.15);
+                            border-color: #ffff00;
+                        }
+                        75% {
+                            box-shadow: 0 0 35px #00ff00, inset 0 0 28px rgba(0,255,0,0.18);
+                            border-color: #00ff00;
+                        }
+                    }
+                    @keyframes shake-rotate {
+                        0%, 100% { transform: rotate(0deg) scale(1); }
+                        10% { transform: rotate(-10deg) scale(1.1); }
+                        20% { transform: rotate(10deg) scale(0.9); }
+                        30% { transform: rotate(-8deg) scale(1.05); }
+                        40% { transform: rotate(8deg) scale(0.95); }
+                        50% { transform: rotate(-5deg) scale(1.02); }
+                        60% { transform: rotate(5deg) scale(0.98); }
+                        70% { transform: rotate(-3deg) scale(1.01); }
+                        80% { transform: rotate(3deg) scale(0.99); }
+                        90% { transform: rotate(-1deg) scale(1); }
+                    }
+                    @keyframes matrix-rain {
+                        0% { transform: translateY(-100%); opacity: 0; }
+                        10% { opacity: 1; }
+                        90% { opacity: 1; }
+                        100% { transform: translateY(1000%); opacity: 0; }
+                    }
+                    @keyframes zoom-pulse {
+                        0%, 100% { transform: scale(1); }
+                        50% { transform: scale(1.15); }
+                    }
+                    @keyframes color-cycle {
+                        0% { color: #ff6b6b; }
+                        16% { color: #feca57; }
+                        33% { color: #48dbfb; }
+                        50% { color: #ff9ff3; }
+                        66% { color: #54a0ff; }
+                        83% { color: #5f27cd; }
+                        100% { color: #ff6b6b; }
+                    }
+                    @keyframes spin-glow {
+                        0% { transform: rotate(0deg); filter: hue-rotate(0deg); }
+                        100% { transform: rotate(360deg); filter: hue-rotate(360deg); }
+                    }
+                    .ai-generated-container {
+                        position: relative;
+                        padding: 60px;
+                        border: 4px solid #00ffff;
+                        border-radius: 20px;
+                        animation: electric-border 2s infinite, shake-rotate 5s infinite;
+                        background: rgba(0,0,0,0.7);
+                        overflow: hidden;
+                    }
+                    .ai-generated-container::before {
+                        content: '';
+                        position: absolute;
+                        top: -50%;
+                        left: -50%;
+                        width: 200%;
+                        height: 200%;
+                        background: conic-gradient(from 0deg, transparent, #D97757, transparent, #ff6b35, transparent);
+                        animation: spin-glow 3s linear infinite;
+                        opacity: 0.3;
+                    }
+                    .ai-badge {
+                        display: inline-block;
+                        padding: 15px 40px;
+                        background: linear-gradient(45deg, #D97757, #ff6b35, #D97757);
+                        background-size: 200% 200%;
+                        animation: neon-pulse 1.5s infinite, zoom-pulse 2s infinite;
+                        border-radius: 50px;
+                        font-size: 1.5em;
+                        font-weight: bold;
+                        color: white;
+                        margin-bottom: 30px;
+                        position: relative;
+                        z-index: 1;
+                    }
+                    .glitch-text {
+                        font-size: 2.5em;
+                        font-weight: bold;
+                        animation: glitch 0.5s infinite, color-cycle 3s infinite;
+                        position: relative;
+                        z-index: 1;
+                    }
+                    .glitch-text::before,
+                    .glitch-text::after {
+                        content: 'Claude Code で生成';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .glitch-text::before {
+                        animation: glitch-skew 1s infinite;
+                        color: #00ffff;
+                        z-index: -1;
+                        clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+                        transform: translate(-3px, -3px);
+                    }
+                    .glitch-text::after {
+                        animation: glitch-skew 1s infinite reverse;
+                        color: #ff00ff;
+                        z-index: -1;
+                        clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+                        transform: translate(3px, 3px);
+                    }
+                    .matrix-char {
+                        position: absolute;
+                        font-family: monospace;
+                        font-size: 20px;
+                        color: #00ff00;
+                        opacity: 0.7;
+                        animation: matrix-rain 4s linear infinite;
+                        text-shadow: 0 0 10px #00ff00;
+                    }
+                    .sparkle {
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        background: white;
+                        border-radius: 50%;
+                        animation: zoom-pulse 0.5s infinite;
+                        box-shadow: 0 0 20px white, 0 0 40px #ffff00;
+                    }
+                    .sub-text {
+                        font-size: 1.2em;
+                        color: rgba(255,255,255,0.9);
+                        margin-top: 25px;
+                        animation: neon-pulse 2s infinite;
+                        position: relative;
+                        z-index: 1;
+                    }
+                    .robot-emoji {
+                        display: inline-block;
+                        animation: shake-rotate 1s infinite;
+                        font-size: 3em;
+                        margin: 20px;
+                    }
+                </style>
+
+                <!-- Matrix Rain Effect -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none;">
+                    <span class="matrix-char" style="left: 5%; animation-delay: 0s;">01</span>
+                    <span class="matrix-char" style="left: 15%; animation-delay: 0.5s;">AI</span>
+                    <span class="matrix-char" style="left: 25%; animation-delay: 1s;">10</span>
+                    <span class="matrix-char" style="left: 35%; animation-delay: 1.5s;">{'>'}</span>
+                    <span class="matrix-char" style="left: 45%; animation-delay: 2s;">_</span>
+                    <span class="matrix-char" style="left: 55%; animation-delay: 0.3s;">$</span>
+                    <span class="matrix-char" style="left: 65%; animation-delay: 0.8s;">11</span>
+                    <span class="matrix-char" style="left: 75%; animation-delay: 1.3s;">00</span>
+                    <span class="matrix-char" style="left: 85%; animation-delay: 1.8s;">{'<'}/</span>
+                    <span class="matrix-char" style="left: 95%; animation-delay: 2.3s;">#</span>
+                </div>
+
+                <div class="ai-generated-container">
+                    <!-- Sparkles -->
+                    <span class="sparkle" style="top: 10%; left: 10%; animation-delay: 0s;"></span>
+                    <span class="sparkle" style="top: 20%; right: 15%; animation-delay: 0.2s;"></span>
+                    <span class="sparkle" style="bottom: 15%; left: 20%; animation-delay: 0.4s;"></span>
+                    <span class="sparkle" style="bottom: 25%; right: 10%; animation-delay: 0.6s;"></span>
+
+                    <div class="ai-badge">AI GENERATED</div>
+
+                    <div class="robot-emoji">&#129302;</div>
+
+                    <h2 class="glitch-text">Claude Code で生成</h2>
+
+                    <p class="sub-text">
+                        このプレゼンテーション資料は<br>
+                        <strong style="font-size: 1.3em; animation: color-cycle 2s infinite;">100% Claude Code</strong><br>
+                        によって作成されました
+                    </p>
+
+                    <div style="margin-top: 30px; position: relative; z-index: 1;">
+                        <span style="font-size: 2em; animation: shake-rotate 2s infinite; display: inline-block;">&#9889;</span>
+                        <span style="font-size: 1em; color: #48dbfb; animation: neon-pulse 1s infinite;">Human + AI Collaboration</span>
+                        <span style="font-size: 2em; animation: shake-rotate 2s infinite 0.5s; display: inline-block;">&#9889;</span>
+                    </div>
+                </div>
+            </section>
+
             <!-- タイトルスライド -->
             <section class="title-slide" data-background="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)">
                 <!-- ロゴ飛散パーティクル - Claude公式スターバーストロゴ -->
