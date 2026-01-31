@@ -1795,30 +1795,6 @@
                     </div>
                 </section>
 
-                <!-- ハンズオン Step 2 補足: インストール確認 -->
-                <section>
-                    <h2>Step 2 補足: インストール確認</h2>
-                    <p>インストールされた Plugin と Skill を確認してみよう</p>
-                    <div class="terminal-window" style="margin-top: 20px;">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                        </div>
-                        <div class="terminal-body">
-                            <div><span class="terminal-prompt">> </span><span class="terminal-command">/plugin list</span></div>
-                            <div class="terminal-output" style="margin-top: 10px;">Installed plugins:</div>
-                            <div class="terminal-output" style="color: #2ed573;">  - example-skills@anthropics/skills</div>
-                            <div class="terminal-output" style="margin-top: 15px;"><span class="terminal-prompt">> </span><span class="terminal-command">/skills</span></div>
-                            <div class="terminal-output" style="margin-top: 10px;">Available skills:</div>
-                            <div class="terminal-output">  ...</div>
-                            <div class="terminal-output" style="color: #ff9f43;">  /skill-creator    - Create a new skill interactively</div>
-                            <div class="terminal-output">  ...</div>
-                        </div>
-                    </div>
-                    <p class="fragment small-text" style="margin-top: 15px;"><span class="code-inline">/skill-creator</span> があればOK</p>
-                </section>
-
                 <!-- ハンズオン Step 3: skill-creator -->
                 <section>
                     <h2>Step 3: skill-creator で Skill 作成</h2>
@@ -1842,29 +1818,6 @@
                             <li><strong>「テストケースを自動生成するスキル」</strong> - 関数を渡すとテストを提案</li>
                             <li><strong>「READMEを自動生成するスキル」</strong> - プロジェクト構造から README を作成</li>
                         </ul>
-                    </div>
-                </section>
-
-                <!-- ハンズオン Step 3 続き: 対話の流れ -->
-                <section>
-                    <h2>Step 3 続き: 対話の流れ</h2>
-                    <div class="terminal-window" style="font-size: 0.85em;">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                        </div>
-                        <div class="terminal-body" style="padding: 12px;">
-                            <div class="fragment"><span style="color: #54a0ff;">Q: </span>What would you like your skill to do?</div>
-                            <div class="fragment"><span style="color: #2ed573;">A: </span>コードの品質をレビューして改善点を教えてくれるスキル</div>
-                            <div class="fragment" style="margin-top: 10px;"><span style="color: #54a0ff;">Q: </span>What should the skill be named?</div>
-                            <div class="fragment"><span style="color: #2ed573;">A: </span>code-review</div>
-                            <div class="fragment" style="margin-top: 10px;"><span style="color: #54a0ff;">Q: </span>Should it auto-invoke when relevant?</div>
-                            <div class="fragment"><span style="color: #2ed573;">A: </span>Yes</div>
-                            <div class="fragment" style="margin-top: 10px;"><span style="color: #54a0ff;">Q: </span>Where to save? (global/project)</div>
-                            <div class="fragment"><span style="color: #2ed573;">A: </span>project</div>
-                            <div class="fragment" style="margin-top: 10px; color: #2ed573;">✓ Created .claude/skills/code-review/SKILL.md</div>
-                        </div>
                     </div>
                 </section>
 
@@ -1970,9 +1923,14 @@
                         <li class="fragment"><strong>サブエージェントを使いこなす</strong> - 重い調査は委譲、並列実行で高速化</li>
                         <li class="fragment"><strong>検証方法を与える</strong> - テスト・型チェック・期待出力を明示</li>
                         <li class="fragment"><strong>Skill で効率化</strong> - 繰り返しタスクはSkillにまとめる</li>
-                        <li class="fragment"><strong>公式ドキュメントを読む</strong> - 困ったらまずドキュメントを確認</li>
-                        <li class="fragment"><strong>こまめにキャッチアップ</strong> - アップデートが早いので定期的にチェック</li>
                     </ul>
+                    <div class="fragment success-box" style="margin-top: 25px;">
+                        <h4 style="margin-top: 0; color: #2ed573;">最重要</h4>
+                        <ul style="margin-bottom: 0;">
+                            <li><strong>公式ドキュメントを読む</strong> - 今日紹介したのは一部、全体像を把握しておこう</li>
+                            <li><strong>こまめにキャッチアップ</strong> - アップデートが早いので定期的にチェック</li>
+                        </ul>
+                    </div>
                 </section>
 
                 <section data-background="linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)">
